@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         UHP Schedule CTT and Fill Rate
 // @namespace    http://tampermonkey.net/
-// @version      41.0
+// @version      42.0
 // @description  CTT, VNHE, fade, report, Slack with geo cluster API, kvdb cooldown, node owners
 // @match        https://amazon.unifiedhiringportal.com/schedules*
 // @grant        GM_getValue
@@ -13,9 +13,9 @@
 (function () {
  'use strict';
  var STORAGE_KEY = 'uhp_aqua_data_v12';
- var SLACK_WEBHOOK = 'https://hooks.slack.com/services/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';
+ var SLACK_WEBHOOK = 'https://hooks.slack.com/services/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';
  var KVDB = 'https://kvdb.io/GTfupUArU2g4pE6Lv9KNhM/lastSent';
- var COOLDOWN = 1000;
+ var COOLDOWN = 30 * 60 * 1000;
  var apiSchedules = [];
  var geoMap = {};
  var VNHE_SITES = new Set(['WFG1','WLC1','WNM3','WNM4','WNM6','WTX1','WTX3','WTX9','WNY4','WFB1','WGE2','QBM3','QKY9','QBM9','WBM3','WMG1','XAL2','HMB1','QFL3','QFL9','QMS2','WFL3','WML1','WMS2','XMS2','XMS4','QZZ8','WID1','WID3','WEE1','WMD2','WFK1','WSC6','WPT2','QOL1','WBV1','QOL9','WCO5','WCO8','WCO9','WOL1','WWY1','WMI1','WMI4','XSA2','SSC3','WSC2','WND2','WND3','WND6','WMT2','WMT3','WMT4','WMT5','WWG5','WMI2','QBY8','QMA9','WNC9','WTN1','WWV8','QES1','WNG1','QDE1','WDE1','QBR2','QVA3','WGR2','WGR3','WUT1','WKN5','XSF2','QBA4','QKS3','WGC8','WKS1','WKS3','WKS4','WMO7','XWI2','WKN3','XJO1','QBE1','WMD1','WPY1','DLL4','WIL1','WIL4','QMS4','WET1','WMS4','WMN6','WWI4','WWI6','WIO9','DFR7','WMN3','WMN4','WMN8','WLN3','WLN6','WIO2','WIO3','WNB2','WNB4','WOR1','WOR3','WPR1','WZN2','WZN4','QZN1','WZN1','WZN6','QAV9','WOO1','WWV9','WWS1','QTX5','WSD2','WTX4','WTX5','WVC1','QKY3','WIN1','WKY3','WKY5','XEV1','DHI2','WUT3','WUT4','QHS3','QIL5','QMO4','WIL3','WIL5','WMO3','WMO4','WMO6','WNY1','WNY3','QLP6','WFL6','QMS9','WFL4','WOR2','QFS1','WKS2','WCF7','WKN2','QTX9']);
